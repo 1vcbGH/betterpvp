@@ -19,10 +19,12 @@ public class AntiKillAbuseListener implements Listener {
     private int resetTimeInSeconds;
     private boolean isEnabled;
     private List<String> abuseCommands;
+    private JavaPlugin plugin;
 
     public AntiKillAbuseListener(JavaPlugin plugin) {
+        this.plugin = plugin;
         // Cargar configuración del plugin
-        loadConfig(plugin.getConfig());
+        loadConfig();
 
         // Programar reinicio del contador cada cierto tiempo si la funcionalidad está habilitada
         if (isEnabled) {
@@ -30,7 +32,11 @@ public class AntiKillAbuseListener implements Listener {
         }
     }
 
-    private void loadConfig(FileConfiguration config) {
+    private void loadConfig() {
+        // Recargar configuración del plugin
+        plugin.reloadConfig();
+        FileConfiguration config = plugin.getConfig();
+
         // Cargar límite de asesinatos, tiempo de reinicio, estado de la funcionalidad y comandos en caso de abuso desde la configuración
         maxKillsBeforeAutoKill = config.getInt("Max Kills", 5);
         resetTimeInSeconds = config.getInt("Time Limit", 300);
