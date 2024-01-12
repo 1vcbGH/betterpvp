@@ -1,6 +1,7 @@
 package github.betterpvp;
 
 import Listener.AntiKillAbuseListener;
+import Listener.PlayerDeathListener;
 import commands.reload;
 import manager.ConfigManager;
 import org.bukkit.Bukkit;
@@ -64,6 +65,7 @@ public final class BetterPvP extends JavaPlugin {
 
     public void registerEvents() {
         getServer().getPluginManager().registerEvents(new AntiKillAbuseListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
     }
 
     public static BetterPvP getPlugin() {
