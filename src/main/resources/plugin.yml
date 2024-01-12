@@ -4,6 +4,7 @@ main: github.betterpvp.BetterPvP
 api-version: '1.13'
 author: srsstaff_tv, sstudios, 1vcb
 website: https://sstudiosdev.github.io/
+depend: [Vault]
 
 commands:
   betterpvp:
@@ -11,6 +12,10 @@ commands:
     usage: /betterpvp <subcommand>
 
 permissions:
+  betterpvp.help:
+    description: permission to view the help menu
+    default: op
+
   betterpvp.reload:
     description: Permission to reload the configuration
     default: op
